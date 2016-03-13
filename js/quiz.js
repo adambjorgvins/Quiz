@@ -73,7 +73,7 @@ function renderNewQuestion(){
     $('.no').addClass('hidden')
 
     var question = RandomQuestion()
-    var p = $('<p class="waves-effect waves-light btn">'+ question.nr1 +' * '+ question.nr2 +'</p>')
+    var p = $('<h3 class="center"> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
     $('.question').append(p)
 
 
@@ -86,7 +86,7 @@ function renderNewQuestion(){
         if (correct){
             classes = classes + ' js_correct'
         }
-        var li = $('<li class="'+ classes +'"> '+ ans +'</li>')
+        var li = $('<li class="'+ classes +'" ><h5> '+ ans +'</h5></li>')
         answers.append(li)
     }
 }
