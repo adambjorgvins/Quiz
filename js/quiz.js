@@ -46,12 +46,12 @@ function answerSelected(e){
     var answer = $(e.currentTarget)
     var isCorrect = answer.hasClass('js_correct')
     if (isCorrect){
-        $('.wrong').addClass('hidden')
-        $('.right').removeClass('hidden')
+        $('.no').addClass('hidden')
+        $('.yes').removeClass('hidden')
     }
     else{
-        $('.right').addClass('hidden')
-        $('.wrong').removeClass('hidden')
+        $('.yes').addClass('hidden')
+        $('.no').removeClass('hidden')
     }
 
     setTimeout(renderNewQuestion,2000)
@@ -69,11 +69,11 @@ function renderNewQuestion(){
 
     $('.question').empty()
     $('.answers').empty()
-    $('.right').addClass('hidden')
-    $('.wrong').addClass('hidden')
+    $('.yes').addClass('hidden')
+    $('.no').addClass('hidden')
 
     var question = RandomQuestion()
-    var p = $('<p class="bla" >'+ question.nr1 +' * '+ question.nr2 +'</p>')
+    var p = $('<p class="waves-effect waves-light btn">'+ question.nr1 +' * '+ question.nr2 +'</p>')
     $('.question').append(p)
 
 
