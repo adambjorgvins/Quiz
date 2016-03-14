@@ -40,22 +40,10 @@ function RandomQuestion(){
 
     // Skila Nýrri spurningu
     return new Question(rand1,rand2,answeres,rightAnswerIndex)
-
 }
-function answerSelected(e){
-    var answer = $(e.currentTarget)
-    var isCorrect = answer.hasClass('js_correct')
-    if (isCorrect){
-        $('.no').addClass('hidden')
-        $('.yes').removeClass('hidden')
-    }
-    else{
-        $('.yes').addClass('hidden')
-        $('.no').removeClass('hidden')
-    }
 
-    setTimeout(renderNewQuestion,2000)
-}
+
+
 /**
  * Býr til random tölu á ákveðnu bili. Notar Math.Random til að finna random fyrir "random"
  * @param min þetta er minnst mögulega talan
@@ -63,8 +51,10 @@ function answerSelected(e){
  * @returns {*}
  */
 function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }
+
+
 function renderNewQuestion(){
 
     $('.question').empty()
@@ -73,7 +63,7 @@ function renderNewQuestion(){
     $('.no').addClass('hidden')
 
     var question = RandomQuestion()
-    var p = $('<h3 class="center"> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
+    var p = $('<h5 class=""> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h5>')
     $('.question').append(p)
 
 
@@ -86,9 +76,26 @@ function renderNewQuestion(){
         if (correct){
             classes = classes + ' js_correct'
         }
-        var li = $('<li class="'+ classes +'" ><h5> '+ ans +'</h5></li>')
+        var li = $('<li class="'+ classes +'" ><h3> '+ ans +'</h3> </li>')
         answers.append(li)
     }
+}
+
+
+
+function answerSelected(e){
+    var answer = $(e.currentTarget)
+    var isCorrect = answer.hasClass('js_correct')
+    if (isCorrect){
+        $('.no').addClass('hidden')
+        $('.yes').removeClass('hidden')
+    }
+    else{
+        $('.yes').addClass('hidden')
+        $('.no').removeClass('hidden')
+    }
+
+    setTimeout(renderNewQuestion,3000)
 }
 
 $(function(){

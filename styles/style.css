@@ -13,40 +13,57 @@ li{
     border:solid 1px purple;
     cursor: pointer;
 }
-h3{
+h5{
     background-color: #00b0ff;
     width:100%;
     height: 50px;
     margin:10px;
     border-radius:5px; color: white;
     border:solid 1px #00b0ff;
-
-
 }
-h5{
-  text-align: center;
+ul li{
+    text-align: center;
+    margin: 15px !important;
+
+
 }
 .yes{
     font-size: 25px;
     background-color: green;
-    width: 50%;
+    width: 100%;
     border-radius:5px; color: white;
     border:solid 1px green;
     text-align: center;
+    margin: 0 auto;
 }
 .no{
-    font-size: 25px;
+    font-size: 15px;
     background-color: red;
-    width: 50%;
     border-radius:5px; color: white;
     border:solid 1px red;
     text-align: center;
+    margin: 0 auto;
+    width: 100%;
+
 }
 .question h3{
     padding-top: 20px;
     height: 90px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+.question{
 
 }
 .answers li{
     background-color: purple;
+    width: 50px;
+    margin: 0 auto;
+    float: left;
+   }
+.content{
+    background-color: aqua;
+    height: 100%;
+    width: 40%;
 }

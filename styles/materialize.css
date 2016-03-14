@@ -7565,8 +7565,6 @@ h2 {
 }
 
 h3 {
-  font-size: 2.92rem;
-  line-height: 110%;
   margin: 1.46rem 0 1.168rem 0;
 }
 
@@ -10833,9 +10831,8 @@ select {
 .picker__day--today {
   position: relative;
   color: #595959;
-  letter-spacing: -.3;
+
   padding: .75rem 0;
-  font-weight: 400;
   border: 1px solid transparent;
 }
 
