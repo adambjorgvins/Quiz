@@ -25,13 +25,13 @@ function RandomQuestion(){
 
     // Reikna margfeldi talnanna
     var ans = rand1 * rand2
-
     // Búa til 3 random svör
-    var answeres = []
-    answeres.push(getRandomInt(0,100))
-    answeres.push(getRandomInt(0,100))
-    answeres.push(getRandomInt(0,100))
-
+    var answeres = [ans]
+    answeres.push(getRandomInt(0,100, answeres))
+    answeres.push(getRandomInt(0,100, answeres))
+    answeres.push(getRandomInt(0,100, answeres))
+    answeres.push(getRandomInt(0,100, answeres))
+    answeres = answeres.slice(1,answeres.length)
     // Finna random stað fyrir rétta svarið
     var rightAnswerIndex = getRandomInt(0,2)
 
@@ -46,24 +46,30 @@ function answerSelected(e){
     var answer = $(e.currentTarget)
     var isCorrect = answer.hasClass('js_correct')
     if (isCorrect){
-        $('.no').addClass('hidden')
-        $('.yes').removeClass('hidden')
+        answer.addClass('yes')
     }
     else{
-        $('.yes').addClass('hidden')
-        $('.no').removeClass('hidden')
+        answer.addClass('no')
+        var correctAnswer = answer.siblings('.js_correct')
+        correctAnswer.addClass('yes')
     }
 
-    setTimeout(renderNewQuestion,2000)
+    setTimeout(renderNewQuestion,10000)
 }
 /**
  * Býr til random tölu á ákveðnu bili. Notar Math.Random til að finna random fyrir "random"
  * @param min þetta er minnst mögulega talan
  * @param max Þetta er stærsta mögulega talan
+ * @param array Ekki skila tölum sem að eru í þessu array
  * @returns {*}
  */
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function getRandomInt(min, max, array) {
+    array = array || []
+    var randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+    while (array.indexOf(randomInt)>=0){
+        randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    return randomInt
 }
 function renderNewQuestion(){
 
@@ -73,7 +79,7 @@ function renderNewQuestion(){
     $('.no').addClass('hidden')
 
     var question = RandomQuestion()
-    var p = $('<h3 class="center"> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
+    var p = $('<h3 class=""> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
     $('.question').append(p)
 
 
@@ -86,7 +92,7 @@ function renderNewQuestion(){
         if (correct){
             classes = classes + ' js_correct'
         }
-        var li = $('<li class="'+ classes +'" ><h5> '+ ans +'</h5></li>')
+        var li = $('<div class="'+ classes +'" ><h5> '+ ans +'</h5></div>')
         answers.append(li)
     }
 }
