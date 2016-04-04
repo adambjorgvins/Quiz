@@ -54,7 +54,7 @@ function answerSelected(e){
         correctAnswer.addClass('yes')
     }
 
-    setTimeout(renderNewQuestion,10000)
+    setTimeout(renderNewQuestion,1000)
 }
 /**
  * Býr til random tölu á ákveðnu bili. Notar Math.Random til að finna random fyrir "random"
@@ -63,7 +63,7 @@ function answerSelected(e){
  * @param array Ekki skila tölum sem að eru í þessu array
  * @returns {*}
  */
-function getRandomInt(min, max, array) {
+function getRandomInt(min, max, array) { 
     array = array || []
     var randomInt = Math.floor(Math.random() * (max - min + 1)) + min;
     while (array.indexOf(randomInt)>=0){
