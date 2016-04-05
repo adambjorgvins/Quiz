@@ -1,3 +1,6 @@
+body{
+    padding-top: 50px;
+}
 .hidden{
     display:none;
 }
@@ -12,20 +15,28 @@
     width: 890px;
     margin-left: 5px;
     margin-bottom: 5px;
+
 }
 .question h3{
-    background:Aqua;
+    background:#ff2052;
     text-align:center;
-    height: 100px;
+    height: 55px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 200%;
+    padding-top: 20px;
+
 }
 .answers div{
     background-color: #00b0ff;
     margin: 0 5px 5px 5px;
-    text-align:center;
+    text-align: center;
     cursor: pointer;
     color: black;
     width: 440px;
-    height: 100px;
+    height: 52px;
+    height: 59px;
+    padding-top: 34px;
+    font-family: "Arial Black", Gadget, sans-serif;
 }
 .answers {
     align-items: center;
