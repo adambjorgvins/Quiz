@@ -60,6 +60,29 @@ function RandomQuestion(){
 }
 
 /**
+ *
+ */
+function renderNewQuestion(){
+
+    $('.question').empty()
+    $('.answers').empty()
+
+    var question = RandomQuestion()
+    var questionElement = $('<h3> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
+    $('.question').append(questionElement)
+    var answers = $('.answers')
+    for (var i =0; i<question.answers.length;i++){
+        var ans = question.answers[i]
+        var correct = question.rightAnswerIndex == i
+        var classes = "js_answer"
+        if (correct){
+            classes = classes + ' js_correct'
+        }
+        var li = $('<div class="'+ classes +'" ><h5> '+ ans +'</h5></div>')
+        answers.append(li)
+    }
+}
+/**
  * Hún finnur svarið sem var smellt á og athugar hvort það sé rétt svar.
  * ef það er rétt þá er bætt við Class sem heitir 'yes' og litar elementið grænt.
  * eða ef það er rangt þá er bætt við Class sem heitir 'no' og litar elementið rautt.
@@ -83,33 +106,9 @@ function answerSelected(e){
         var correctAnswer = answer.siblings('.js_correct')
         correctAnswer.addClass('yes')
     }
-    //Bíðum í 3 sekúndur og birtum nýja spurningu
-    setTimeout(renderNewQuestion,3000)
+    //Bíðum í 2 sekúndur og birtum nýja spurningu
+    setTimeout(renderNewQuestion,2000)
 }
-/**
- *
- */
-function renderNewQuestion(){
-
-    $('.question').empty()
-    $('.answers').empty()
-
-    var question = RandomQuestion()
-    var questionElement = $('<h3> Hvað er '+ question.nr1 +' * '+ question.nr2 +' ?</h3>')
-    $('.question').append(questionElement)
-    var answers = $('.answers')
-    for (var i =0; i<question.answers.length;i++){
-        var ans = question.answers[i]
-        var correct = question.rightAnswerIndex == i
-        var classes = "js_answer"
-        if (correct){
-            classes = classes + ' js_correct'
-        }
-        var li = $('<div class="'+ classes +'" ><h5> '+ ans +'</h5></div>')
-        answers.append(li)
-    }
-}
-
 $(function(){
     $('body').on('click','.js_answer',answerSelected)
     renderNewQuestion()
