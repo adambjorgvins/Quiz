@@ -1,6 +1,4 @@
-body{
-    padding-top: 200px;
-}
+
 .hidden{
     display:none;
 }
@@ -33,7 +31,6 @@ body{
     cursor: pointer;
     color: black;
     width: 440px;
-    height: 52px;
     height: 59px;
     padding-top: 34px;
     font-family: "Arial Black", Gadget, sans-serif;
